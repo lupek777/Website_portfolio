@@ -1,4 +1,3 @@
-
 import { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Media from "./Media";
@@ -16,40 +15,50 @@ export default function ProjectCarousel({
 }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
   const busyRef = useRef(false);
+  const scrollEndTimer = useRef<number | undefined>(undefined);
+
   const [active, setActive] = useState(0);
   const [ready, setReady] = useState(false);
 
   const count = images.length;
 
-  const extended = count > 1
-    ? [images[count - 1], ...images, images[0]]
-    : images;
+  const extended =
+    count > 1
+      ? [images[count - 1], ...images, images[0]]
+      : images;
 
   const getStep = useCallback(() => {
     const track = trackRef.current;
     const slide = track?.querySelector(".slide") as HTMLElement | null;
+
     if (!track || !slide) return 0;
 
-    return slide.getBoundingClientRect().width +
-      parseFloat(getComputedStyle(track).gap || "0");
+    return (
+      slide.getBoundingClientRect().width +
+      parseFloat(getComputedStyle(track).gap || "0")
+    );
   }, []);
 
-  const centerSlide = useCallback((index: number, smooth: boolean) => {
-    const track = trackRef.current;
-    const step = getStep();
-    if (!track || !step) return;
+  const centerSlide = useCallback(
+    (index: number, smooth: boolean) => {
+      const track = trackRef.current;
+      const step = getStep();
 
-    track.scrollTo({
-      left: step * index,
-      behavior: smooth ? "smooth" : "instant",
-    });
-  }, [getStep]);
+      if (!track || !step) return;
+
+      track.scrollTo({
+        left: step * index,
+        behavior: smooth ? "smooth" : "instant",
+      });
+    },
+    [getStep]
+  );
 
   useEffect(() => {
     if (!count) return;
 
     const frame = requestAnimationFrame(() => {
-      centerSlide(1, false);
+      centerSlide(count > 1 ? 1 : 0, false);
       setReady(true);
     });
 
@@ -57,10 +66,10 @@ export default function ProjectCarousel({
   }, [count, centerSlide]);
 
   const move = (direction: number) => {
-    const track = trackRef.current;
-    if (!track || count < 2 || busyRef.current) return;
+    if (count < 2 || busyRef.current) return;
 
     busyRef.current = true;
+
     const next = active + direction;
     setActive((next + count) % count);
 
@@ -73,8 +82,9 @@ export default function ProjectCarousel({
     }, 450);
   };
 
-  const handleScrollEnd = () => {
+  const handleScrollEnd = useCallback(() => {
     const track = trackRef.current;
+
     if (!track || count < 2 || busyRef.current) return;
 
     const step = getStep();
@@ -89,9 +99,27 @@ export default function ProjectCarousel({
       centerSlide(1, false);
       setActive(0);
     } else {
-      setActive(position - 1);
+      setActive(Math.max(0, Math.min(count - 1, position - 1)));
     }
+  }, [count, getStep, centerSlide]);
+
+  const handleScroll = () => {
+    if (scrollEndTimer.current !== undefined) {
+      window.clearTimeout(scrollEndTimer.current);
+    }
+
+    scrollEndTimer.current = window.setTimeout(() => {
+      handleScrollEnd();
+    }, 120);
   };
+
+  useEffect(() => {
+    return () => {
+      if (scrollEndTimer.current !== undefined) {
+        window.clearTimeout(scrollEndTimer.current);
+      }
+    };
+  }, []);
 
   if (!count) return null;
 
@@ -107,6 +135,7 @@ export default function ProjectCarousel({
         type="button"
         aria-label="Previous image"
         onClick={() => move(-1)}
+        disabled={count < 2}
       >
         <ChevronLeft />
       </button>
@@ -116,12 +145,13 @@ export default function ProjectCarousel({
         ref={trackRef}
         tabIndex={0}
         style={{ visibility: ready ? "visible" : "hidden" }}
-        onScrollEnd={handleScrollEnd}
+        onScroll={handleScroll}
         onKeyDown={(event) => {
           if (event.key === "ArrowLeft") {
             event.preventDefault();
             move(-1);
           }
+
           if (event.key === "ArrowRight") {
             event.preventDefault();
             move(1);
@@ -146,6 +176,7 @@ export default function ProjectCarousel({
         type="button"
         aria-label="Next image"
         onClick={() => move(1)}
+        disabled={count < 2}
       >
         <ChevronRight />
       </button>
