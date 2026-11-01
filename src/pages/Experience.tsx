@@ -493,7 +493,7 @@ export default function Test_3() {
               alt={section.imageAlt}
             />
             <p className="test3-caption">
-              MAJA SIUDA — FASHION PORTFOLIO
+              MAJA SIUDA - FASHION PORTFOLIO
             </p>
           </div>
 
