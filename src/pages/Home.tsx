@@ -24,18 +24,9 @@ export default function Home() {
 
       });
 
+      // Keep the PORTFOLIO heading visible immediately. It is intentionally
+      // not included in the GSAP timeline so it never disappears while loading.
       hero
-
-        .fromTo(
-
-          ".hero-title",
-
-          { opacity: 0, y: 60, scale: 0.96 },
-
-          { opacity: 1, y: 0, scale: 1, duration: 1.1 }
-
-        )
-
         .fromTo(
 
           ".hero-model",
@@ -286,6 +277,8 @@ export default function Home() {
 
         .hero-title {
 
+          opacity: 1;
+          visibility: visible;
           position: absolute;
 
           z-index: 1;
