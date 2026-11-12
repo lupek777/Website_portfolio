@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import { Phone, ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
-import { contact } from "../data/contact";
+
+const phoneNumber = "+34 623 568 352";
 
 export default function Contact() {
   const pageRef = useRef<HTMLElement>(null);
@@ -68,20 +69,20 @@ export default function Contact() {
         </p>
 
         <div className="apple-contact-actions">
-       <a
-  className="apple-contact-button apple-button-dark"
-  href="mailto:majasiuda23@gmail.com"
->
-  Get in touch
-  <ArrowUpRight size={18} />
-</a>
+          <a
+            className="apple-contact-button apple-button-dark"
+            href="mailto:majasiuda23@gmail.com"
+          >
+            Get in touch
+            <ArrowUpRight size={18} />
+          </a>
 
           <a
             className="apple-contact-button apple-button-light"
-            href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`}
+            href="tel:+34623568352"
           >
             <Phone size={16} />
-            {contact.phone}
+            {phoneNumber}
           </a>
         </div>
 

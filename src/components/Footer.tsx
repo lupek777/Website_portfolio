@@ -9,7 +9,6 @@ export default function Footer() {
           <Link to="/education">EDUCATION</Link>
           <Link to="/projects">PROJECTS</Link>
           <Link to="/contact">CONTACT</Link>
-          <Link to="/#about">ABOUT</Link>
         </nav>
         <SocialLinks />
         <p className="footer-name" aria-hidden="true">MAJA SIUDA</p>
