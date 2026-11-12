@@ -1,30 +1,20 @@
-
-
 import { useLayoutEffect, useRef } from "react";
 
 import gsap from "gsap";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-
-
 gsap.registerPlugin(ScrollTrigger);
 
-
-
-export default function Test1() {
+export default function Home() {
 
   const root = useRef<HTMLElement>(null);
-
-
 
   useLayoutEffect(() => {
 
     const element = root.current;
 
     if (!element) return;
-
-
 
     const ctx = gsap.context(() => {
 
@@ -33,8 +23,6 @@ export default function Test1() {
         defaults: { ease: "power3.out" },
 
       });
-
-
 
       hero
 
@@ -72,8 +60,6 @@ export default function Test1() {
 
         );
 
-
-
       gsap.fromTo(
 
         ".intro-copy > *",
@@ -106,8 +92,6 @@ export default function Test1() {
 
       );
 
-
-
       gsap.fromTo(
 
         ".intro-video",
@@ -137,8 +121,6 @@ export default function Test1() {
         }
 
       );
-
-
 
       gsap.fromTo(
 
@@ -170,8 +152,6 @@ export default function Test1() {
 
       );
 
-
-
       gsap.fromTo(
 
         ".intro-footer",
@@ -202,19 +182,13 @@ export default function Test1() {
 
       );
 
-
-
       ScrollTrigger.refresh();
 
     }, element);
 
-
-
     return () => ctx.revert();
 
   }, []);
-
-
 
   return (
 
@@ -236,15 +210,11 @@ export default function Test1() {
 
         }
 
-
-
         /* =====================================
 
            SECTION 01 — HERO / COVER
 
-        \===================================== */
-
-
+        ===================================== */
 
         .hero-section {
 
@@ -261,8 +231,6 @@ export default function Test1() {
           overflow: hidden;
 
           isolation: isolate;
-
-
 
           background-image:
 
@@ -282,8 +250,6 @@ export default function Test1() {
 
             url("/images/dark_silver_motion_blur_hero.jpg");
 
-
-
           background-size: cover;
 
           background-position: center;
@@ -291,8 +257,6 @@ export default function Test1() {
           background-color: #111;
 
         }
-
-
 
         .hero-section::after {
 
@@ -320,8 +284,6 @@ export default function Test1() {
 
         }
 
-
-
         .hero-title {
 
           position: absolute;
@@ -334,15 +296,11 @@ export default function Test1() {
 
           transform: translate(-50%, -50%);
 
-
-
           width: max-content;
 
           max-width: 110%;
 
           margin: 0;
-
-
 
           font-family: "Bebas Neue", sans-serif;
 
@@ -353,8 +311,6 @@ export default function Test1() {
           line-height: .72;
 
           letter-spacing: -.025em;
-
-
 
           color: #650700;
 
@@ -368,8 +324,6 @@ export default function Test1() {
 
         }
 
-
-
         .hero-model-wrap {
 
           position: absolute;
@@ -381,8 +335,6 @@ export default function Test1() {
           left: 50%;
 
           transform: translateX(-50%);
-
-
 
           width: min(58vw, 850px);
 
@@ -397,8 +349,6 @@ export default function Test1() {
           pointer-events: none;
 
         }
-
-
 
         .hero-model {
 
@@ -415,8 +365,6 @@ export default function Test1() {
           filter: drop-shadow(0 10px 35px rgba(0,0,0,.45));
 
         }
-
-
 
         .hero-bottomline {
 
@@ -439,8 +387,6 @@ export default function Test1() {
           align-items: flex-end;
 
         }
-
-
 
         .hero-scroll {
 
@@ -466,15 +412,11 @@ export default function Test1() {
 
         }
 
-
-
         /* =====================================
 
            SECTION 02 — INTRODUCTION
 
-        \===================================== */
-
-
+        ===================================== */
 
         .intro-section {
 
@@ -498,17 +440,15 @@ export default function Test1() {
 
               ellipse at 75% 50%,
 
-              \#171717 0%,
+              #171717 0%,
 
-              \#0b0b0b 50%,
+              #0b0b0b 50%,
 
-              \#060606 100%
+              #060606 100%
 
             );
 
         }
-
-
 
         .intro-topline {
 
@@ -524,8 +464,6 @@ export default function Test1() {
 
           padding: 32px 4.7vw;
 
-
-
           display: flex;
 
           justify-content: space-between;
@@ -533,8 +471,6 @@ export default function Test1() {
           align-items: center;
 
         }
-
-
 
         .intro-meta {
 
@@ -548,12 +484,14 @@ export default function Test1() {
 
         }
 
-
-
         /* Match the cleaner intro layout in the latest reference */
+
         .intro-topline,
+
         .intro-footer {
+
           display: none;
+
         }
 
         .intro-grid {
@@ -576,8 +514,6 @@ export default function Test1() {
 
         }
 
-
-
         .intro-copy {
 
           position: relative;
@@ -591,8 +527,6 @@ export default function Test1() {
           padding: 0 1.5vw 12px 0;
 
         }
-
-
 
         .intro-kicker {
 
@@ -608,15 +542,11 @@ export default function Test1() {
 
         }
 
-
-
         .intro-title {
 
           margin: 0 0 42px;
 
           color: #f5f5f5;
-
-
 
           font-family: "Bebas Neue", sans-serif;
 
@@ -632,19 +562,21 @@ export default function Test1() {
 
         }
 
-
-
         .intro-title span {
+
           display: block;
+
         }
 
         .intro-title .name-line {
+
           white-space: nowrap;
+
           letter-spacing: -.035em;
+
           font-size: .96em;
+
         }
-
-
 
         .intro-description {
 
@@ -662,8 +594,6 @@ export default function Test1() {
 
         }
 
-
-
         .intro-visual {
 
           position: relative;
@@ -680,34 +610,49 @@ export default function Test1() {
 
         }
 
-
-
         /* Soft burgundy fade behind the video — no visible rectangle */
+
         .intro-visual::before {
+
           content: "";
+
           position: absolute;
+
           z-index: 0;
+
           width: min(49vw, 680px);
+
           height: min(76vw, 900px);
+
           left: 50%;
+
           top: 48%;
+
           transform: translate(-50%, -50%);
+
           background: radial-gradient(
+
             ellipse at center,
+
             rgba(101, 7, 0, .48) 0%,
+
             rgba(101, 7, 0, .30) 34%,
+
             rgba(101, 7, 0, .13) 57%,
+
             rgba(101, 7, 0, .04) 72%,
+
             transparent 82%
+
           );
+
           filter: blur(28px);
+
           pointer-events: none;
+
         }
 
-
         /* VIDEO REPLACES THE BURGUNDY CIRCLE */
-
-
 
         .intro-video {
 
@@ -737,8 +682,6 @@ export default function Test1() {
 
         }
 
-
-
         .intro-model-wrap {
 
           position: relative;
@@ -757,8 +700,6 @@ export default function Test1() {
 
         }
 
-
-
         .intro-model {
 
           display: block;
@@ -775,8 +716,6 @@ export default function Test1() {
 
         }
 
-
-
         .intro-footer {
 
           position: absolute;
@@ -788,8 +727,6 @@ export default function Test1() {
           right: 4.7vw;
 
           bottom: 28px;
-
-
 
           display: grid;
 
@@ -805,8 +742,6 @@ export default function Test1() {
 
         }
 
-
-
         .intro-footer span {
 
           color: #aaa;
@@ -819,15 +754,11 @@ export default function Test1() {
 
         }
 
-
-
         .intro-footer span:nth-child(2) {
 
           text-align: center;
 
         }
-
-
 
         .intro-footer span:nth-child(3) {
 
@@ -835,15 +766,11 @@ export default function Test1() {
 
         }
 
-
-
         /* =====================================
 
            TABLET
 
-        \===================================== */
-
-
+        ===================================== */
 
         @media (max-width: 900px) {
 
@@ -853,15 +780,11 @@ export default function Test1() {
 
           }
 
-
-
           .hero-model-wrap {
 
             width: 75vw;
 
           }
-
-
 
           .intro-grid {
 
@@ -871,8 +794,6 @@ export default function Test1() {
 
           }
 
-
-
           .intro-title {
 
             font-size: clamp(62px, 8vw, 100px);
@@ -880,18 +801,16 @@ export default function Test1() {
           }
 
           .intro-description {
+
             font-size: clamp(13px, 1.35vw, 16px);
+
           }
-
-
 
           .intro-description {
 
             max-width: 90%;
 
           }
-
-
 
           .intro-video {
 
@@ -907,15 +826,11 @@ export default function Test1() {
 
         }
 
-
-
         /* =====================================
 
            MOBILE
 
-        \===================================== */
-
-
+        ===================================== */
 
         @media (max-width: 600px) {
 
@@ -927,8 +842,6 @@ export default function Test1() {
 
           }
 
-
-
           .hero-title {
 
             top: 43%;
@@ -936,8 +849,6 @@ export default function Test1() {
             font-size: clamp(90px, 25vw, 170px);
 
           }
-
-
 
           .hero-model-wrap {
 
@@ -947,15 +858,11 @@ export default function Test1() {
 
           }
 
-
-
           .hero-bottomline {
 
             padding: 18px 20px 28px;
 
           }
-
-
 
           .hero-scroll {
 
@@ -963,17 +870,13 @@ export default function Test1() {
 
           }
 
-
-
           .intro-section {
 
             height: auto;
 
-            min-height: 100svh;
+            min-height: 0;
 
           }
-
-
 
           .intro-topline {
 
@@ -981,19 +884,15 @@ export default function Test1() {
 
           }
 
-
-
           .intro-meta {
 
             font-size: 9px;
 
           }
 
-
-
           .intro-grid {
 
-            min-height: 100svh;
+            min-height: 0;
 
             height: auto;
 
@@ -1005,29 +904,33 @@ export default function Test1() {
 
             justify-content: flex-start;
 
-            padding: 105px 20px 20px;
+            padding: 105px 20px 35px;
+
+            gap: 0;
 
           }
-
-
 
           .intro-copy {
 
-            padding: 0;
+            position: relative;
+
+            z-index: 4;
+
+            flex: 0 0 auto;
 
             width: 100%;
 
+            max-width: none;
+
+            padding: 0;
+
           }
-
-
 
           .intro-kicker {
 
             margin-bottom: 20px;
 
           }
-
-
 
           .intro-title {
 
@@ -1039,8 +942,6 @@ export default function Test1() {
 
           }
 
-
-
           .intro-description {
 
             max-width: 100%;
@@ -1051,50 +952,75 @@ export default function Test1() {
 
           }
 
-
-
           .intro-visual {
 
-            height: 45vh;
+            position: relative;
 
-            min-height: 270px;
+            z-index: 1;
 
-            margin-top: 12px;
+            width: 100%;
+
+            height: min(145vw, 560px);
+
+            min-height: 360px;
+
+            flex: 0 0 auto;
+
+            margin-top: 32px;
+
+            overflow: visible;
 
           }
 
-
-
           .intro-visual::before {
+
             width: min(88vw, 390px);
+
             height: min(125vw, 560px);
+
             top: 50%;
+
             filter: blur(24px);
+
           }
 
           .intro-model-wrap {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 100%;
 
             height: 100%;
 
           }
 
-
-
           .intro-video {
+
+            position: absolute;
+
+            z-index: 0;
 
             width: min(58vw, 280px);
 
             height: auto;
 
+            max-height: 100%;
+
             aspect-ratio: 9 / 16;
+
+            object-fit: cover;
 
             border-radius: 0;
 
+            left: 50%;
+
             top: 50%;
 
+            transform: translate(-50%, -50%);
+
           }
-
-
 
           .intro-footer {
 
@@ -1114,23 +1040,17 @@ export default function Test1() {
 
           }
 
-
-
           .intro-footer span {
 
             font-size: 8px;
 
           }
 
-
-
           .intro-footer span:nth-child(2) {
 
             text-align: right;
 
           }
-
-
 
           .intro-footer span:nth-child(3) {
 
@@ -1140,12 +1060,52 @@ export default function Test1() {
 
         }
 
+        @media (max-width: 380px) {
 
+          .intro-grid {
+
+            padding-left: 16px;
+
+            padding-right: 16px;
+
+          }
+
+          .intro-title {
+
+            font-size: clamp(40px, 10vw, 52px);
+
+          }
+
+          .intro-description {
+
+            font-size: 12px;
+
+          }
+
+          .intro-visual {
+
+            height: 490px;
+
+            min-height: 0;
+
+          }
+
+          .intro-video {
+
+            width: min(62vw, 250px);
+
+          }
+
+        }
 
         /* Hide the top metadata and the bottom labels/rule on the intro screen. */
+
         .intro-topline,
+
         .intro-footer {
+
           display: none !important;
+
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1160,17 +1120,11 @@ export default function Test1() {
 
       `}</style>
 
-
-
       {/* SCREEN 01 — HERO */}
-
-
 
       <section className="hero-section">
 
         <h1 className="hero-title">PORTFOLIO</h1>
-
-
 
         <div className="hero-model-wrap">
 
@@ -1194,11 +1148,7 @@ export default function Test1() {
 
         </div>
 
-
-
         <div className="hero-bottomline" />
-
-
 
         <div className="hero-scroll">
 
@@ -1208,11 +1158,7 @@ export default function Test1() {
 
       </section>
 
-
-
       {/* SCREEN 02 — INTRODUCTION */}
-
-
 
       <section className="intro-section">
 
@@ -1224,8 +1170,6 @@ export default function Test1() {
 
           </span>
 
-
-
           <span className="intro-meta">
 
             MAJA SIUDA / 2026
@@ -1233,8 +1177,6 @@ export default function Test1() {
           </span>
 
         </div>
-
-
 
         <div className="intro-grid">
 
@@ -1246,8 +1188,6 @@ export default function Test1() {
 
             </p>
 
-
-
             <h2 className="intro-title">
 
               <span>HELLO, I'M</span>
@@ -1255,8 +1195,6 @@ export default function Test1() {
               <span className="name-line">MAJA SIUDA</span>
 
             </h2>
-
-
 
             <p className="intro-description">
 
@@ -1280,8 +1218,6 @@ export default function Test1() {
 
           </div>
 
-
-
           <div className="intro-visual">
 
             <video
@@ -1301,8 +1237,6 @@ export default function Test1() {
               aria-label="Decorative fashion video"
 
             />
-
-
 
             <div className="intro-model-wrap">
 
@@ -1329,8 +1263,6 @@ export default function Test1() {
           </div>
 
         </div>
-
-
 
         <div className="intro-footer">
 
